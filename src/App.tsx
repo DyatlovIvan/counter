@@ -28,6 +28,7 @@ function App() {
       <button>-</button>
       <button>*</button>
       <button>*</button>
+      <button>*</button>
     </div>
   );
 }
