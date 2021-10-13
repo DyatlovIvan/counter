@@ -23,6 +23,9 @@ function App() {
         <p>1 2 3</p>
         <p>1</p>
       </header>
+      <button>x</button>
+      <button>+</button>
+      <button>-</button>
     </div>
   );
 }
