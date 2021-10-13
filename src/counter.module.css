@@ -1,0 +1,38 @@
+
+.counter{
+    text-align: center;
+    border: 3px solid aqua;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.input{
+    height: 90px;
+    width: 240px;
+    background-color: aqua;
+    font-size: 50px;
+    text-align: center;
+    border: 3px solid aqua;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.buttonBox{
+    border: 3px solid aqua;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+
+.limit{
+    color: red;
+}
+
+.test{
+    color: white;
+}

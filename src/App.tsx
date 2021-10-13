@@ -1,35 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Counter} from "./counter";
 
 function App() {
+    let [counter,setCounter] = useState(0)
+
+    const incCounter = (value:number)=>setCounter(++counter)
+
+    const restCounter = (value:number)=>setCounter(0)
 
   return (
-
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>1 2 3</p>
-        <p>1</p>
-      </header>
-      <button>x</button>
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>*</button>
-      <button>*</button>
-      <button>*</button>
+      <Counter
+          counter = {counter}
+          incCounter = {incCounter}
+          restCounter = {restCounter}/>
     </div>
   );
 }
