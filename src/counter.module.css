@@ -1,9 +1,4 @@
 
-.all{
-    display: inline-flex;
-    margin:  0 auto;
-    
-}
 .counter{
     text-align: center;
     border: 3px solid aqua;

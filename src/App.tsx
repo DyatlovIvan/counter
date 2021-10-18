@@ -1,29 +1,64 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./counter";
+import {InstallCounterValue} from "./installCounterValue";
 
 function App() {
-    let [counter,setCounter] = useState<number|string>(5)
+    let [counter, setCounter] = useState<number>(0)
+    let [title, setTittle] = useState<string>('')
+    let [maxValue, setMaxValue] = useState(5)
+    let [minValue, setMinValue] = useState(0)
+    const titleHandler = () => minValue >= maxValue ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
 
-    const incCounter = (value:number| string)=>{
-      if( typeof counter === 'number' ){
-      setCounter(++counter)
-      }
+useEffect(()=>{
+    minValue >= maxValue ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
+},[minValue,maxValue])
+
+    const setMaxValueHandler = (value: number) => {
+        setMaxValue(() => value)
+    }
+    const setMinValueHandler = (value: number) => {
+        setMinValue(() => value)
     }
 
-    const restCounter = (value:number| string)=>setCounter(value)
 
-    const setTitle = (value:number| string)=> setCounter(value)
+    const setHandler = () => {
+        setCounter(minValue)
+    }
 
-  return (
-    <div className="App">
-      <Counter
-          counter = {counter}
-          incCounter = {incCounter}
-          restCounter = {restCounter}
-          setTitle = {setTitle}/>
-    </div>
-  );
+    const incCounter = () => {
+        // if (typeof counter === 'number') {
+            setCounter(()=> ++counter)
+        // }
+    }
+    const restCounter = () => {
+        setCounter(minValue)
+    }
+    //const restCounter = (value:number| string)=>setCounter(value)
+
+    //const setTitle = (value: number | string) => setCounter(value)
+
+    return (
+        <div className="App">
+            <InstallCounterValue maxValue={maxValue}
+                                 minValue={minValue}
+                                 counter={counter}
+                                 setMaxValue={setMaxValueHandler}
+                                 setMinValue={setMinValueHandler}
+                                 setHandler={setHandler}
+
+            />
+
+            <Counter maxValue={maxValue}
+                     minValue={minValue}
+                     counter={counter}
+                     title={title}
+                     incCounter={incCounter}
+                     restCounter={restCounter}
+                //setTitle = {setTitle}
+            />
+        </div>
+    );
 }
 
 export default App;
