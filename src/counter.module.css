@@ -1,11 +1,16 @@
 
+.all{
+    display: inline-flex;
+    margin:  0 auto;
+    
+}
 .counter{
     text-align: center;
     border: 3px solid aqua;
     border-radius: 5px;
     width: 300px;
     height: 200px;
-    margin: 0 auto;
+    margin: 50px;
     margin-top: 200px;
 }
 
@@ -35,4 +40,8 @@
 
 .test{
     color: white;
+}
+
+.inputError{
+    background-color: red;
 }
