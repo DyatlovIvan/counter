@@ -68,7 +68,7 @@ export const Counter = ({counter, incCounter, restCounter, ...props}: CounterTyp
 
         <div className={style.counter}>
             <div className={`${counter === props.maxValue ? style.limit : ''} ${style.input}`}>
-                {props.title}
+                {counter>props.minValue?counter:props.title}
             </div>
 
             <div className={style.buttonBox}>

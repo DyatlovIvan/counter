@@ -8,18 +8,17 @@ function App() {
     let [title, setTittle] = useState<string>('')
     let [maxValue, setMaxValue] = useState(5)
     let [minValue, setMinValue] = useState(0)
-    const titleHandler = () => minValue >= maxValue ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
 
 useEffect(()=>{
     minValue >= maxValue ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
 },[minValue,maxValue])
 
-    const setMaxValueHandler = (value: number) => {
-        setMaxValue(() => value)
-    }
-    const setMinValueHandler = (value: number) => {
-        setMinValue(() => value)
-    }
+    // const setMaxValueHandler = (value: number) => {
+    //     setMaxValue(() => value)
+    // }
+    // const setMinValueHandler = (value: number) => {
+    //     setMinValue(() => value)
+    // }
 
 
     const setHandler = () => {
@@ -43,8 +42,8 @@ useEffect(()=>{
             <InstallCounterValue maxValue={maxValue}
                                  minValue={minValue}
                                  counter={counter}
-                                 setMaxValue={setMaxValueHandler}
-                                 setMinValue={setMinValueHandler}
+                                 setMaxValue={setMaxValue}
+                                 setMinValue={setMinValue}
                                  setHandler={setHandler}
 
             />

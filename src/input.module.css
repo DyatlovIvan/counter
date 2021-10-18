@@ -1,0 +1,7 @@
+.inputError{
+    background-color: red;
+}
+.input{
+    border: 3px solid aqua;
+    border-radius: 5px;
+}
