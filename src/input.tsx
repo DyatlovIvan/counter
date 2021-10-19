@@ -15,11 +15,8 @@ export const Input = (props:InputType) =>{
     }
 
     return(
-        <div>
             <input className={`${props.style?style.inputError:''} ${style.input}`}
                    value = {props.value} type="number"
                    onChange={InputOnChangeHandler}/>
-        </div>
-
     )
 }
