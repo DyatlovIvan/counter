@@ -1,5 +1,5 @@
-import { Input } from "./input";
-import { Button } from "./Button";
+import {Input} from "./input";
+import {Button} from "./Button";
 import style from './counter.module.css'
 
 type InstallCounterValueType = {
@@ -11,28 +11,36 @@ type InstallCounterValueType = {
     setHandler: () => void
 }
 
-export const InstallCounterValue = (props: InstallCounterValueType) => {
-    const disabledSetHandler = props.minValue >= props.maxValue || props.maxValue < 0 || props.minValue < 0 ? true : false
-    const styleHandlerMax = props.minValue === props.maxValue || props.maxValue < 0 ? true : false
-    const styleHandlerMin = props.minValue >= props.maxValue || props.minValue < 0 ? true : false
+export const InstallCounterValue = ({
+                                        maxValue,
+                                        minValue,
+                                        counter,
+                                        setMaxValue,
+                                        setMinValue,
+                                        setHandler,
+                                        ...props
+                                    }: InstallCounterValueType) => {
+    const disabledSetHandler = minValue >= maxValue || maxValue < 0 || minValue < 0
+    const styleHandlerMax = minValue === maxValue || maxValue < 0
+    const styleHandlerMin = minValue >= maxValue || minValue < 0
     return (
         <div className={style.counter}>
             <div className={style.input}>
-                <span className={style.inputTitile}>max value: </span>
-                <Input value={props.maxValue}
-                    callBack={props.setMaxValue}
-                    style={styleHandlerMax} />
+                <span className={style.inputTitle}>max value: </span>
+                <Input value={maxValue}
+                       callBack={setMaxValue}
+                       style={styleHandlerMax}/>
             </div>
             <div className={style.input}>
-                <span className={style.inputTitile}>min value: </span>
-                <Input value={props.minValue}
-                    callBack={props.setMinValue}
-                    style={styleHandlerMin} />
+                <span className={style.inputTitle}>min value: </span>
+                <Input value={minValue}
+                       callBack={setMinValue}
+                       style={styleHandlerMin}/>
             </div>
-            <div className = {style.buttonBox}>
+            <div className={style.buttonBox}>
                 <Button name={'set'}
-                    callBack={props.setHandler}
-                    disabled={disabledSetHandler} />
+                        callBack={setHandler}
+                        disabled={disabledSetHandler}/>
             </div>
 
         </div>

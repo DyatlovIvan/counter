@@ -6,14 +6,14 @@ type ButtonType = {
     disabled?: boolean
 
 }
-export const Button = (props: ButtonType) => {
+export const Button = ({name,...props}: ButtonType) => {
     
     return (
         <span>
         <button className={style.button}
                 disabled={props.disabled}
                 onClick={props.callBack}>
-            {props.name}
+            {name}
         </button>
     </span>
     )
