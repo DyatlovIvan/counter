@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import { Counter } from "./counter";
-import { InstallCounterValue } from "./installCounterValue";
+import {Counter} from "./counter";
+import {InstallCounterValue} from "./installCounterValue";
 
 function App() {
     let [counter, setCounter] = useState<number>(0)
     let [title, setTittle] = useState<string>('')
-    let [showCounter,SetShowCounter] = useState<boolean>(true)
+    let [showCounter, SetShowCounter] = useState<boolean>(true)
     let [maxValue, setMaxValue] = useState(5)
     let [minValue, setMinValue] = useState(0)
-   
+
     useEffect(() => {
         let max = localStorage.getItem('maxValue')
         let min = localStorage.getItem('minValue')
@@ -24,7 +24,7 @@ function App() {
     }, [])
 
     useEffect(() => {
-        minValue >= maxValue || minValue<0 ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
+        minValue >= maxValue || minValue < 0 ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
     }, [minValue, maxValue])
 
     const setMaxValueHandler = (value: number) => {
@@ -44,9 +44,7 @@ function App() {
     }
 
     const incCounter = () => {
-        // if (typeof counter === 'number') {
         setCounter(() => ++counter)
-        // }
     }
     const restCounter = () => {
         setCounter(minValue)
@@ -58,22 +56,21 @@ function App() {
     return (
         <div className="App">
             <InstallCounterValue maxValue={maxValue}
-                minValue={minValue}
-                counter={counter}
-                setMaxValue={setMaxValueHandler}
-                setMinValue={setMinValueHandler}
-                setHandler={setHandler}
+                                 minValue={minValue}
+                                 counter={counter}
+                                 setMaxValue={setMaxValueHandler}
+                                 setMinValue={setMinValueHandler}
+                                 setHandler={setHandler}
 
             />
 
             <Counter maxValue={maxValue}
-                minValue={minValue}
-                counter={counter}
-                title={title}
-                showCounter = {showCounter}
-                incCounter={incCounter}
-                restCounter={restCounter}
-            //setTitle = {setTitle}
+                     minValue={minValue}
+                     counter={counter}
+                     title={title}
+                     showCounter={showCounter}
+                     incCounter={incCounter}
+                     restCounter={restCounter}
             />
         </div>
     );
