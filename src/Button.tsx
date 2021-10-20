@@ -7,6 +7,7 @@ type ButtonType = {
 
 }
 export const Button = (props: ButtonType) => {
+    
     return (
         <span>
         <button className={style.button}

@@ -6,6 +6,7 @@ import { InstallCounterValue } from "./installCounterValue";
 function App() {
     let [counter, setCounter] = useState<number>(0)
     let [title, setTittle] = useState<string>('')
+    let [showCounter,SetShowCounter] = useState<boolean>(true)
     let [maxValue, setMaxValue] = useState(5)
     let [minValue, setMinValue] = useState(0)
    
@@ -17,25 +18,29 @@ function App() {
         }
         if (min) {
             setMinValue(JSON.parse(min))
+            setCounter(JSON.parse(min))
         }
 
     }, [])
 
     useEffect(() => {
-        minValue >= maxValue ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
+        minValue >= maxValue || minValue<0 ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
     }, [minValue, maxValue])
 
-    // const setMaxValueHandler = (value: number) => {
-    //     setMaxValue(() => value)
-    // }
-    // const setMinValueHandler = (value: number) => {
-    //     setMinValue(() => value)
-    // }
+    const setMaxValueHandler = (value: number) => {
+        setMaxValue(value)
+        SetShowCounter(false)
+    }
+    const setMinValueHandler = (value: number) => {
+        setMinValue(value)
+        SetShowCounter(false)
+    }
 
     const setHandler = () => {
         localStorage.setItem('maxValue', JSON.stringify(maxValue))
         localStorage.setItem('minValue', JSON.stringify(minValue))
         setCounter(minValue)
+        SetShowCounter(true)
     }
 
     const incCounter = () => {
@@ -55,8 +60,8 @@ function App() {
             <InstallCounterValue maxValue={maxValue}
                 minValue={minValue}
                 counter={counter}
-                setMaxValue={setMaxValue}
-                setMinValue={setMinValue}
+                setMaxValue={setMaxValueHandler}
+                setMinValue={setMinValueHandler}
                 setHandler={setHandler}
 
             />
@@ -65,6 +70,7 @@ function App() {
                 minValue={minValue}
                 counter={counter}
                 title={title}
+                showCounter = {showCounter}
                 incCounter={incCounter}
                 restCounter={restCounter}
             //setTitle = {setTitle}

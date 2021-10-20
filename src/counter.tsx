@@ -8,6 +8,7 @@ type CounterType = {
     title: string
     maxValue: number
     minValue: number
+    showCounter:boolean
     incCounter: () => void
     restCounter: () => void
     //setTitle: (value: number | string) => void
@@ -15,14 +16,14 @@ type CounterType = {
 
 export const Counter = ({counter, incCounter, restCounter, ...props}: CounterType) => {
    
-    const disabledIncHandler =  counter === props.maxValue ? true : false
+    const disabledIncHandler = counter === props.maxValue ? true : false
     const disabledRestHandler = counter === props.minValue ? true : false
     
     return (
         
         <div className={style.counter}>
-            <div className={`${counter === props.maxValue ? style.limit : ''} ${style.inputCounter}`}>
-                {counter>=props.minValue|| counter>=props.maxValue?counter:props.title}
+            <div className={`${counter === props.maxValue && props.showCounter ===true ? style.limit : ''} ${style.inputCounter}`}>
+                {props.showCounter?counter:props.title}
             </div>
 
             <div className={style.buttonBox}>
