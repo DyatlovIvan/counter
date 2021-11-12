@@ -1,4 +1,4 @@
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 const initialState = {
     counter: 0,
     title: '',
@@ -6,6 +6,6 @@ const initialState = {
     maxValue: 5,
     minValue: 0
 }
-export const counterReducer = (state: InitialStateType, action: any): InitialStateType => {
+export const counterReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
     return state
 }
