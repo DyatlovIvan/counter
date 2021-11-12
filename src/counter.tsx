@@ -4,7 +4,7 @@ import {ChangeEvent, useState} from 'react';
 
 
 type CounterType = {
-    counter: number
+    value: number
     title: string
     maxValue: number
     minValue: number
@@ -15,7 +15,7 @@ type CounterType = {
 }
 
 export const Counter = ({
-                            counter,
+                            value,
                             title,
                             maxValue,
                             minValue,
@@ -25,8 +25,8 @@ export const Counter = ({
                             ...props
                         }: CounterType) => {
 
-    const disabledIncHandler = counter === maxValue
-    const disabledRestHandler = counter === minValue
+    const disabledIncHandler = value === maxValue
+    const disabledRestHandler = value === minValue
 
     return (
 
@@ -34,8 +34,8 @@ export const Counter = ({
             {/*<div className={`${counter === maxValue && showCounter === true ? style.limit : ''} ${style.inputCounter}`}>*/}
             {/*    {showCounter ? counter : title}*/}
             {/*</div>*/}
-            {showCounter ? <div className={counter === maxValue ? `${style.inputCounter} ${style.limit}` : style.inputCounter}>
-                {counter}
+            {showCounter ? <div className={value === maxValue ? `${style.inputCounter} ${style.limit}` : style.inputCounter}>
+                {value}
             </div>
             :
             <div className={style.inputCounter}>

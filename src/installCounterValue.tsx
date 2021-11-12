@@ -5,7 +5,7 @@ import style from './counter.module.css'
 type InstallCounterValueType = {
     maxValue: number
     minValue: number
-    counter: number
+    value: number
     setMaxValue: (value: number) => void
     setMinValue: (value: number) => void
     setHandler: () => void
@@ -14,7 +14,7 @@ type InstallCounterValueType = {
 export const InstallCounterValue = ({
                                         maxValue,
                                         minValue,
-                                        counter,
+                                        value,
                                         setMaxValue,
                                         setMinValue,
                                         setHandler,
