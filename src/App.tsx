@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./counter";
 import {InstallCounterValue} from "./installCounterValue";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {StateType} from "./bll/store";
-import {InitialStateType} from "./bll/counter-reducer";
+import {incCounterValueAC, InitialStateType, restCounterValueAC} from "./bll/counter-reducer";
 
 function App() {
 
-    let counter = useSelector<StateType,InitialStateType>(state =>state.counter)
+    const counter = useSelector<StateType,InitialStateType>(state =>state.counter)
+    const dispatch = useDispatch()
+
 
 
 
@@ -54,10 +56,10 @@ function App() {
     }
     //
     const incCounter = () => {
-       // setCounter(() => ++counter)
+       dispatch(incCounterValueAC())
     }
     const restCounter = () => {
-        //setCounter(minValue)
+        dispatch(restCounterValueAC())
     }
 
 
