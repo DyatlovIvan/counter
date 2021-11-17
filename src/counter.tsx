@@ -1,6 +1,6 @@
 import style from './counter.module.css'
 import {Button} from "./Button";
-import {ChangeEvent, useState} from 'react';
+import {ChangeEvent, useEffect, useState} from 'react';
 
 
 type CounterType = {
@@ -28,26 +28,31 @@ export const Counter = ({
     const disabledIncHandler = value === maxValue
     const disabledRestHandler = value === minValue
 
+    //useEffect(()=>{
+    //    const maxValue = localStorage.getItem("maxValue")
+    // },[])
+
     return (
 
         <div className={style.counter}>
             {/*<div className={`${counter === maxValue && showCounter === true ? style.limit : ''} ${style.inputCounter}`}>*/}
             {/*    {showCounter ? counter : title}*/}
             {/*</div>*/}
-            {showCounter ? <div className={value === maxValue ? `${style.inputCounter} ${style.limit}` : style.inputCounter}>
-                {value}
-            </div>
-            :
-            <div className={style.inputCounter}>
-                {title}
-            </div>}
+            {showCounter ?
+                <div className={value === maxValue ? `${style.inputCounter} ${style.limit}` : style.inputCounter}>
+                    {value}
+                </div>
+                :
+                <div className={style.inputCounter}>
+                    {title}
+                </div>}
 
             <div className={style.buttonBox}>
-                <Button callBack={incCounter}
+                <Button onClick={incCounter}
                         name='inc'
                         disabled={disabledIncHandler}
                 />
-                <Button callBack={restCounter}
+                <Button onClick={restCounter}
                         name='rest'
                         disabled={disabledRestHandler}
                 />

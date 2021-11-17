@@ -1,6 +1,7 @@
 import {Input} from "./input";
 import {Button} from "./Button";
 import style from './counter.module.css'
+import React from "react";
 
 type InstallCounterValueType = {
     maxValue: number
@@ -11,7 +12,7 @@ type InstallCounterValueType = {
     setHandler: () => void
 }
 
-export const InstallCounterValue = ({
+export const InstallCounterValue:React.FC<InstallCounterValueType> = ({
                                         maxValue,
                                         minValue,
                                         value,
@@ -19,7 +20,7 @@ export const InstallCounterValue = ({
                                         setMinValue,
                                         setHandler,
                                         ...props
-                                    }: InstallCounterValueType) => {
+                                    }) => {
     const disabledSetHandler = minValue >= maxValue || maxValue < 0 || minValue < 0
     const styleHandlerMax = minValue === maxValue || maxValue < 0
     const styleHandlerMin = minValue >= maxValue || minValue < 0
@@ -39,7 +40,7 @@ export const InstallCounterValue = ({
             </div>
             <div className={style.buttonBox}>
                 <Button name={'set'}
-                        callBack={setHandler}
+                        onClick={setHandler}
                         disabled={disabledSetHandler}/>
             </div>
 

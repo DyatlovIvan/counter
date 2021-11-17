@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
 import {Counter} from "./counter";
 import {InstallCounterValue} from "./installCounterValue";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,6 +10,7 @@ import {
     setMaxValueAC,
     setMinValueAC, setValueAC
 } from "./bll/counter-reducer";
+import './App.css';
 
 function App() {
 
@@ -38,7 +38,7 @@ function App() {
     const setMinValueHandler = (value: number) => dispatch(setMinValueAC(value))
 
     const setHandler = () => {
-        // localStorage.setItem('maxValue', JSON.stringify(maxValue))
+        localStorage.setItem('maxValue', JSON.stringify(counter.maxValue))
         // localStorage.setItem('minValue', JSON.stringify(minValue))
         dispatch(setValueAC())
     }
