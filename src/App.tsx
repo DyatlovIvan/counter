@@ -17,18 +17,18 @@ function App() {
     const counter = useSelector<StateType,InitialStateType>(state =>state.counter)
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     let max = localStorage.getItem('maxValue')
-    //     let min = localStorage.getItem('minValue')
-    //     if (max) {
-    //         setMaxValue(JSON.parse(max))
-    //     }
-    //     if (min) {
-    //         setMinValue(JSON.parse(min))
-    //         setCounter(JSON.parse(min))
-    //     }
-    //
-    // }, [])
+    useEffect(() => {
+        let max = localStorage.getItem('maxValue')
+        let min = localStorage.getItem('minValue')
+        if (max) {
+            dispatch(setMaxValueAC(JSON.parse(max)))
+        }
+        if (min) {
+            dispatch(setMinValueAC(JSON.parse(min)))
+            dispatch(setValueAC())
+        }
+
+    }, [])
 
     // useEffect(() => {
     //     minValue >= maxValue || minValue < 0 ? setTittle(() => 'Error!!!') : setTittle(() => 'Press"set"')
@@ -39,7 +39,7 @@ function App() {
 
     const setHandler = () => {
         localStorage.setItem('maxValue', JSON.stringify(counter.maxValue))
-        // localStorage.setItem('minValue', JSON.stringify(minValue))
+        localStorage.setItem('minValue', JSON.stringify(counter.minValue))
         dispatch(setValueAC())
     }
 

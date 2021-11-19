@@ -9,8 +9,8 @@ const rootReducer = combineReducers({
 
 
 
-
-export const store = createStore(rootReducer,loadState())
+export const store = createStore(rootReducer)
+// export const store = createStore(rootReducer,loadState())
 
 store.subscribe(() => {
     saveState({
